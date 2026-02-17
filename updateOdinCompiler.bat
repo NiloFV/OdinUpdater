@@ -16,15 +16,15 @@ for /f "tokens=1-2" %%i in ('curl.exe -s https://api.github.com/repos/odin-lang/
 if "%_downloadUrl%"=="notFound" (
 	goto :eof
 )
-echo.
-echo == Dowloading lattest version of Odin compiler ==
-curl.exe -LO %_downloadUrl%
-echo == Finished dowloading ==	
-echo.
 
 set _filename=
 for %%F in ("%_downloadUrl%") do set _filename=%%~nF.zip
 
+echo.
+echo == Dowloading %_filename% ==
+curl.exe -LO %_downloadUrl%
+echo == Finished dowloading ==	
+echo.
 
 set _destinationDir=C:\odin\
 
